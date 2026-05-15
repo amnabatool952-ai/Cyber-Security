@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 import i18n from 'i18n'
+import helmet from 'helmet'
 import cors from 'cors'
 import fs from 'node:fs'
 import yaml from 'js-yaml'
@@ -177,6 +178,7 @@ function configureApp (app: ReturnType<typeof express>, seq: typeof sequelize) {
 
   /* Compression for all requests */
   app.use(compression())
+  app.use(helmet())
 
   /* Bludgeon solution for possible CORS problems: Allow everything! */
   app.options('*', cors())
